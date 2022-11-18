@@ -13,22 +13,22 @@ public class AnalisadorSintatico extends Analisador implements Constantes {
         super();
     }
 
-    // executa 1 vez a máquina
+    // Executa 1 vez a máquina
     public void leProxToken() {
         leitor.s0();
     }
 
-    // verifica se o próximo token é t
-    // avançaa o ponteiro para o próximo token
+    // Verifica se o próximo token é t
+    // Avança o ponteiro para o próximo token
     public void reconhece(Token t) {
         if (t == leitor.tokenReconhecido) {
             leProxToken();
-        } else {
-            throw new ErroSintatico(leitor.tokenReconhecido, t);
+        } else {            
+            throw new ErroSintatico(leitor.tokenReconhecido, t, leitor.linha, leitor.colunaErro);
         }
     }
 
-    // verifica se o próximo token é t
+    // Verifica se o próximo token é t
     // Não avança o ponteiro de leitura
     public boolean proxTokenIs(Token t) {
         if (t == leitor.tokenReconhecido) {
@@ -36,5 +36,5 @@ public class AnalisadorSintatico extends Analisador implements Constantes {
         } else {
             return false;
         }
-    }
+    }   
 }

@@ -17,25 +17,25 @@ public class MeuAnalisadorSintatico extends AnalisadorSintatico {
         } else 
             if (proxTokenIs(Token.EOF))	
                 ; else {
-            Token[] tokensEsperados = {Token.IDENTIFICADOR, Token.EOF};
-            throw new ErroSintatico(this.leitor.tokenReconhecido, tokensEsperados);
+            Token[] tokensEsperados = {Token.IDENTIFICADOR, Token.EOF};            
+            throw new ErroSintatico(this.leitor.tokenReconhecido, tokensEsperados, leitor.linha, leitor.colunaErro);
         }
     }
 
     public void comandoAtribuicao() {
         reconhece(Token.IDENTIFICADOR);
         reconhece(Token.ATRIBUICAO);
-        exp();
+        expressao();
     }
 
-    public void exp() {
+    public void expressao() {
         if (proxTokenIs(Token.NUMERO)) {
             leProxToken();
         } else if (proxTokenIs(Token.IDENTIFICADOR)) {
             leProxToken();
         } else {
-            Token[] tokensEsperados = {Token.NUMERO, Token.IDENTIFICADOR};
-            throw new ErroSintatico(this.leitor.tokenReconhecido, tokensEsperados);
+            Token[] tokensEsperados = {Token.NUMERO, Token.IDENTIFICADOR};            
+            throw new ErroSintatico(this.leitor.tokenReconhecido, tokensEsperados, leitor.linha, leitor.colunaErro);
         }
     }
 }

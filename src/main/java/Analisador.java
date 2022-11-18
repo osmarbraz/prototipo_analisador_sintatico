@@ -3,13 +3,14 @@ public abstract class Analisador implements Constantes {
 
     private String nomeArquivoEntrada;
 
-    public Analisador(String nomeArquivoEntrada) {
-        this.nomeArquivoEntrada = nomeArquivoEntrada;
-    }
-
     public Analisador() {
-        this.nomeArquivoEntrada = NOME_DEFAULT_ARQUIVO_ENTRADA;
+        setNomeArquivoEntrada(NOME_DEFAULT_ARQUIVO_ENTRADA);
     }
+    
+    public Analisador(String nomeArquivoEntrada) {
+        setNomeArquivoEntrada(nomeArquivoEntrada);
+    }
+    
 
     public void setNomeArquivoEntrada(String nomeArquivoEntrada) {
         this.nomeArquivoEntrada = nomeArquivoEntrada;
